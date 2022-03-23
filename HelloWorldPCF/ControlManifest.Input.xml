@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<manifest>
+  <control namespace="VS" constructor="HelloWorldPCF" version="1.0.0" display-name-key="Hello World PCF" description-key="Says hello" control-type="standard" >
+    <property name="Name" display-name-key="Name" description-key="A name" of-type="SingleLine.Text" usage="bound" required="true" />
+    <resources>
+      <code path="index.ts" order="1"/>
+      <css path="css/hello-pcf.css" order="1" />
+    </resources>
+  </control>
+</manifest>
