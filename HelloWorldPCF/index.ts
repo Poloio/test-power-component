@@ -104,7 +104,9 @@ export class HelloWorldPCF implements ComponentFramework.StandardControl<IInputs
      */
     public updateView(context: ComponentFramework.Context<IInputs>): void
     {
-        // Add code to update control view
+        this.name = context.parameters.Name.raw;
+        const message = this.container.querySelector("span")!;
+        message.innerText = `Hello ${this.name}`;
     }
 
     /**
@@ -113,15 +115,17 @@ export class HelloWorldPCF implements ComponentFramework.StandardControl<IInputs
      */
     public getOutputs(): IOutputs
     {
-        return {};
+        return {
+            Name: this.name ?? undefined 
+        };
     }
 
     /**
      * Called when the control is to be removed from the DOM tree. Controls should use this call for cleanup.
-     * i.e. cancelling any pending remote calls, removing listeners, etc.
+     * i.e. cancelling any pending remote calls, --> removing listeners <-- , etc.
      */
     public destroy(): void
     {
-        // Add code to cleanup control if necessary
+        this.container.querySelector("button")!.removeEventListener("click", this.buttonClickHandler);
     }
 }
